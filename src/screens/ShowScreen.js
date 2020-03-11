@@ -6,7 +6,8 @@ const ShowScreen = ({ navigation }) => {
     const { data } = useContext(Context);
     const blogPost = data.find(blogPost => blogPost.id === navigation.getParam("id"));
     return <View>
-        <Text>{blogPost.title} - {blogPost.id}</Text>
+        <Text>{blogPost.title}</Text>
+        <Text>{blogPost.content}</Text>
     </View>
 }
 

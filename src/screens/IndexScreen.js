@@ -1,23 +1,21 @@
 import React, { useContext, useReducer } from "react";
-import { Text, View, FlatList, Button, TouchableOpacity } from "react-native";
-import { Context } from "../context/BlogContext"; 
+import { Text, View, FlatList, TouchableOpacity } from "react-native";
+import { Context } from "../context/BlogContext";
 import { EvilIcons } from "@expo/vector-icons";
 
 
 const IndexScreen = ({navigation}) => {
-  const {data, addBlogs, deleteBlog } = useContext(Context)
+  const {data, deleteBlog } = useContext(Context)
 
   return (
       <>
-        <Text>IndexScreen</Text>
-        <Button title="Add Blog Post" onPress={addBlogs} />
         <FlatList
           keyExtractor={blog => blog.title}
           data={data}
           renderItem={ ({ item }) => {
             return (
               <View style={styles.titleStyle}>
-                  <Text style={styles.textStyle} 
+                  <Text style={styles.textStyle}
                         key={item.id}
                         onPress={() => navigation.navigate("Show", {id: item.id})} >
                         {item.title} - {item.id}
