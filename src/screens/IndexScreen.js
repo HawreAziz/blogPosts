@@ -33,10 +33,11 @@ const IndexScreen = ({navigation}) => {
 
 IndexScreen.navigationOptions = ({ navigation }) => {
   return {
-      headerRight: <TouchableOpacity onPress={() => navigation.navigate("Create")}>
-                     <EvilIcons name="plus" style={styles.plusIconView} />
-                   </TouchableOpacity>
-  };
+      headerRight: () => {
+      return <TouchableOpacity onPress={() => navigation.navigate("Create")}>
+        <EvilIcons name="plus" style={styles.plusIconView} />
+      </TouchableOpacity>
+  }};
 };
 
 const styles = {

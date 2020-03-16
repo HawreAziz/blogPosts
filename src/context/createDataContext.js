@@ -7,7 +7,8 @@ export default (reducer, actions, initialState) => {
     const Provider = ({children}) => {
         const [state, dispatch] = React.useReducer(reducer, initialState);
         return <Context.Provider value={{ data: state, addBlogs: actions.addBlogs(dispatch), 
-                                          deleteBlog: actions.deleteBlog(dispatch)}}>
+                                          deleteBlog: actions.deleteBlog(dispatch),
+                                          editBlog: actions.editBlog(dispatch)}}>
                    {children}
                </Context.Provider>
     }
