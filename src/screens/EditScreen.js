@@ -4,10 +4,12 @@ import FormComponent from "../components/FormComponent";
 
 
 const EditScreen = ({ navigation }) => {
-    const { editBlog } = useContext(Context);
+    const { data, editBlog } = useContext(Context);
+    const blogPost = data.find(blog => blog.id === navigation.getParam('id'));
 
     return <FormComponent handleBlog={(title, content) => {
-        editBlog(navigation.getParam("id"), title, content, () => navigation.navigate("Blog")); }} />
+        editBlog(navigation.getParam("id"), title, content, () => navigation.pop()); }}
+        initialValue={{ title: blogPost.title, content: blogPost.content }}/>
 }
 
 export default EditScreen;

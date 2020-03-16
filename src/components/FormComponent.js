@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import { Text, TextInput, View, Button } from "react-native";
 
 
-const FormComponent = ({ handleBlog }) => {
-    const [ title, setTtitle ] = useState("");
-    const [ content, setContent ] = useState("");
+const FormComponent = ({ handleBlog, initialValue }) => {
+    const [ title, setTtitle ] = useState(initialValue.title);
+    const [ content, setContent ] = useState(initialValue.content);
     return <View style={styles.viewStyle}>
 
               <Text style={styles.titleStyle}>Enter Title</Text>
@@ -21,6 +21,12 @@ const FormComponent = ({ handleBlog }) => {
            </View>
 }
 
+FormComponent.defaultProps = {
+    initialValue: {
+        title: '',
+        content: ''
+    }
+};
 
 const styles = {
     viewStyle: {
