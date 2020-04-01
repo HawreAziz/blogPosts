@@ -10,7 +10,7 @@ const CreateBlogScreen = ({ navigation }) => {
     return <View>
         <FormComponent handleBlog={(title, content) => {
             addBlogs(title, content, () => navigation.navigate("Blog"));
-        }} />
+        }} ButtonText="Create blog" />
     </View>
 }
 

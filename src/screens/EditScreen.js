@@ -9,7 +9,7 @@ const EditScreen = ({ navigation }) => {
 
     return <FormComponent handleBlog={(title, content) => {
         editBlog(navigation.getParam("id"), title, content, () => navigation.pop()); }}
-        initialValue={{ title: blogPost.title, content: blogPost.content }}/>
+        initialValue={{ title: blogPost.title, content: blogPost.content }} ButtonText="Update" />
 }
 
 export default EditScreen;

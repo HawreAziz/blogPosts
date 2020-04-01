@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Text, TextInput, View, Button } from "react-native";
 
 
-const FormComponent = ({ handleBlog, initialValue }) => {
+const FormComponent = ({ handleBlog, initialValue, ButtonText }) => {
     const [ title, setTtitle ] = useState(initialValue.title);
     const [ content, setContent ] = useState(initialValue.content);
     return <View style={styles.viewStyle}>
@@ -17,7 +17,7 @@ const FormComponent = ({ handleBlog, initialValue }) => {
                 value={content}
                 onChangeText={(text) => setContent(text)} />
 
-              <Button title="Create blog" onPress={() => handleBlog(title, content)} />
+              <Button title={ButtonText} onPress={() => handleBlog(title, content)} />
            </View>
 }
 

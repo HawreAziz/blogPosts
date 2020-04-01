@@ -1,11 +1,24 @@
-import React, { useContext, useReducer } from "react";
+import React, { useContext, useEffect } from "react";
 import { Text, View, FlatList, TouchableOpacity } from "react-native";
 import { Context } from "../context/BlogContext";
 import { EvilIcons } from "@expo/vector-icons";
 
 
 const IndexScreen = ({navigation}) => {
-  const {data, deleteBlog } = useContext(Context)
+  const {data, deleteBlog, getBlogs } = useContext(Context)
+  useEffect(() => {
+    getBlogs();
+    
+    const listener = navigation.addListener('didFocus', () => {
+      getBlogs()
+
+    });
+    return () => {
+      listener.remove();
+    }
+    }, []);
+
+  console.log(data);
 
   return (
       <>
@@ -14,7 +27,8 @@ const IndexScreen = ({navigation}) => {
           data={data}
           renderItem={ ({ item }) => {
             return (
-              <View style={styles.titleStyle}>
+              <View style
+              ={styles.titleStyle}>
                   <Text style={styles.textStyle}
                         key={item.id}
                         onPress={() => navigation.navigate("Show", {id: item.id})} >
